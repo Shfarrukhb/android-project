@@ -35,7 +35,7 @@ pipeline {
             stage('fastlane') {
                 steps{
                     container('fastlane') {
-                        sh 'echo $JENKINS_HOME >> pwd.txt'
+                        sh 'ls /home/jenkins/agent/workspace/'
                         sh 'cat pwd.txt'
                         
                         
