@@ -35,7 +35,7 @@ pipeline {
             stage('fastlane') {
                 steps{
                     container('fastlane') {
-                        sh 'ls /home/jenkins/agent/workspace/Fastlane Build/fastlane/'
+                        sh 'ls /home/jenkins/agent/workspace/Fastlane/'
                         sh 'pwd'
                         
                      //   sh 'fastlane dev'
