@@ -35,8 +35,10 @@ pipeline {
             stage('fastlane') {
                 steps{
                     container('fastlane') {
-                        sh 'fastlane dev'
-                        sh 'fatlane prod'
+                        sh 'pwd'
+                        sh 'ls'
+                     //   sh 'fastlane dev'
+                      //  sh 'fatlane prod'
                        }
                     }
                 }
