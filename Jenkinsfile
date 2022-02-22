@@ -29,7 +29,7 @@ pipeline {
     stages {
             stage('prep') {
                 steps {
-                git url: '', branch: 'main'
+                git url: 'https://github.com/Shfarrukhb/android-project.git', branch: 'main'
                 }
             }
             stage('fastlane') {
