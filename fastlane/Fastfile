@@ -1,0 +1,67 @@
+default_platform(:android)
+
+platform :android do
+  desc "Runs all the tests"
+  lane :test do
+    gradle(task: "test")
+  end
+
+  desc "Submit a new Beta Build to Crashlytics Beta"
+    lane :dev do
+       update_android_strings(
+               xml_path: "app/src/main/res/values/strings.xml",
+               block: lambda { |strings|
+                        # value must be a string, you can update what you want here.
+                        strings['app_name'] = "demo-app-dev"
+                      }
+             )
+       gradle(task: "clean assembleRelease",
+           properties: {
+               "android.injected.signing.store.file" => "D:\\Lab\\Android Studio\\demo-android-application\\fastlane\\examplestore",
+               "android.injected.signing.store.password" => "123qwe",
+               "android.injected.signing.key.alias" => "signFiles1",
+               "android.injected.signing.key.password" => "123qwe",
+               "applicationId": "com.anko.devapp.beta",
+               "versionName": "1.0",
+               "buildNumber": "1"
+               }
+               )
+           appcenter_upload(
+                      api_token: "e1c5632325813a63de3646540ef4afa16c768ba0",
+                          owner_name: "Shfarrukhb",
+                              owner_type: "user",
+                                  app_name: "dev-app",
+                                      file: "app/build/outputs/apk/release/app-release.apk",
+                                          notify_testers: "true"
+                                          )
+     end
+
+   lane :prod do
+      update_android_strings(
+              xml_path: "app/src/main/res/values/strings.xml",
+              block: lambda { |strings|
+                       # value must be a string, you can update what you want here.
+                       strings['app_name'] = "demo-app-prod"
+                     }
+            )
+      gradle(task: "clean assembleRelease",
+          properties: {
+              "android.injected.signing.store.file" => "D:\\Lab\\Android Studio\\demo-android-application\\fastlane\\examplestore",
+              "android.injected.signing.store.password" => "123qwe",
+              "android.injected.signing.key.alias" => "signFiles1",
+              "android.injected.signing.key.password" => "123qwe",
+              "applicationId": "com.anko.prodapp.beta",
+              "versionName": "1.0",
+              "buildNumber": "1"
+                            }
+              )
+          appcenter_upload(
+                api_token: "6e1338c9151d0cb0e19de4ef0e25ce985bb5161b",
+                    owner_name: "Shfarrukhb",
+                        owner_type: "user",
+                            app_name: "prod-app",
+                                file: "app/build/outputs/apk/release/app-release.apk",
+                                    notify_testers: "true"
+                                    )
+  end
+ end
