@@ -36,7 +36,7 @@ pipeline {
                 steps{
                     container('fastlane') {
                         sh 'ls /home/jenkins/agent/workspace/'
-                        sh 'cat pwd.txt'
+                        //sh 'cat pwd.txt'
                         
                         
                      //   sh 'fastlane dev'
