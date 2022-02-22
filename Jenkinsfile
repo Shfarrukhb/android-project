@@ -44,7 +44,7 @@ pipeline {
                         
                         
                        sh 'fastlane dev'
-                       sh 'fatlane prod'
+                       sh 'fastlane prod'
                        }
                     }
                 }
