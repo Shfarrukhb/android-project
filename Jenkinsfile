@@ -36,6 +36,10 @@ pipeline {
                 steps{
                     container('fastlane') {
                         sh 'ls'
+                        sh 'cp examplestore ../'
+                        sh 'cd ..'
+                        sh 'ls'
+                        sh 'pwd'
                         //sh 'cat pwd.txt'
                         
                         
