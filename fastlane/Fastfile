@@ -17,7 +17,7 @@ platform :android do
              )
        gradle(task: "clean assembleRelease",
            properties: {
-               "android.injected.signing.store.file" => "D:\\Lab\\Android Studio\\demo-android-application\\fastlane\\examplestore",
+               "android.injected.signing.store.file" => "examplestore",
                "android.injected.signing.store.password" => "123qwe",
                "android.injected.signing.key.alias" => "signFiles1",
                "android.injected.signing.key.password" => "123qwe",
@@ -46,7 +46,7 @@ platform :android do
             )
       gradle(task: "clean assembleRelease",
           properties: {
-              "android.injected.signing.store.file" => "D:\\Lab\\Android Studio\\demo-android-application\\fastlane\\examplestore",
+              "android.injected.signing.store.file" => "examplestore",
               "android.injected.signing.store.password" => "123qwe",
               "android.injected.signing.key.alias" => "signFiles1",
               "android.injected.signing.key.password" => "123qwe",
