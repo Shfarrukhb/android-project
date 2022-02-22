@@ -35,8 +35,9 @@ pipeline {
             stage('fastlane') {
                 steps{
                     container('fastlane') {
-                        sh 'ls'
-                        sh 'pwd'
+                        sh 'echo $JENKINS_HOME >> pwd.txt'
+                        sh 'cat pwd.txt'
+                        
                         
                      //   sh 'fastlane dev'
                       //  sh 'fatlane prod'
